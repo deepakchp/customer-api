@@ -1,7 +1,7 @@
 package com.bankingsystem.customerapi.mapper;
 
-import com.bankingsystem.customerapi.model.Customer;
 import com.bankingsystem.customerapi.model.Address;
+import com.bankingsystem.customerapi.model.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
