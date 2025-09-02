@@ -11,6 +11,7 @@ import java.util.List;
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 50)
     private String id;
 
