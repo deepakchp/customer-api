@@ -105,7 +105,7 @@ components:
         type: string
         pattern: "^[a-zA-Z0-9\\-]+$"
         minLength: 5
-        maxLength: 20
+        maxLength: 100
       description: Unique identifier of a customer (alphanumeric with dashes)
 
   schemas:
