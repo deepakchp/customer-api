@@ -1,7 +1,8 @@
 package com.bankingsystem.customerapi.service;
 
+import com.bankingsystem.customerapi.entity.Customer;
 import com.bankingsystem.customerapi.mapper.CustomerMapper;
-import com.bankingsystem.customerapi.model.Customer;
+import com.bankingsystem.customerapi.model.CustomerDto;
 import com.bankingsystem.customerapi.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,25 +20,25 @@ public class CustomerService {
         this.mapper = mapper;
     }
 
-    public Customer createCustomer(Customer dto) {
-        com.bankingsystem.customerapi.entity.Customer customer = mapper.toEntity(dto);
+    public CustomerDto createCustomer(CustomerDto dto) {
+        Customer customer = mapper.toEntity(dto);
         customer.setCreatedAt(OffsetDateTime.now());
         customer.setUpdatedAt(OffsetDateTime.now());
-        com.bankingsystem.customerapi.entity.Customer saved = repository.save(customer);
+        Customer saved = repository.save(customer);
         return mapper.toDTO(saved);
     }
 
-    public List<Customer> listCustomers(Integer page, Integer limit, String search) {
+    public List<CustomerDto> listCustomers(Integer page, Integer limit, String search) {
         return mapper.toDTOList(repository.findAll());
     }
 
-    public Customer getCustomer(String id) {
+    public CustomerDto getCustomer(String id) {
         return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
     }
 
-    public Customer updateCustomer(String id, Customer dto) {
+    public CustomerDto updateCustomer(String id, CustomerDto dto) {
         com.bankingsystem.customerapi.entity.Customer existing = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
         com.bankingsystem.customerapi.entity.Customer updated = mapper.toEntity(dto);

@@ -17,14 +17,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Customer"
+              $ref: "#/components/schemas/CustomerDto"
       responses:
         "201":
           description: Customer created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customer"
+                $ref: "#/components/schemas/CustomerDto"
     get:
       summary: Arrange (list customers)
       operationId: listCustomers
@@ -57,7 +57,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Customer"
+                  $ref: "#/components/schemas/CustomerDto"
 
   /customers/{customerId}:
     get:
@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Customer"
+                $ref: "#/components/schemas/CustomerDto"
     put:
       summary: Update a customer
       operationId: updateCustomer
@@ -82,7 +82,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Customer"
+              $ref: "#/components/schemas/CustomerDto"
       responses:
         "200":
           description: Customer updated
@@ -109,7 +109,7 @@ components:
       description: Unique identifier of a customer (alphanumeric with dashes)
 
   schemas:
-    Customer:
+    CustomerDto:
       type: object
       properties:
         id:

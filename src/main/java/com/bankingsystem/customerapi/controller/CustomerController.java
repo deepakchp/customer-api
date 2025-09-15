@@ -1,7 +1,8 @@
 package com.bankingsystem.customerapi.controller;
 
 import com.bankingsystem.customerapi.api.CustomersApi;
-import com.bankingsystem.customerapi.model.Customer;
+import com.bankingsystem.customerapi.entity.Customer;
+import com.bankingsystem.customerapi.model.CustomerDto;
 import com.bankingsystem.customerapi.service.CustomerService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -24,17 +25,17 @@ public class CustomerController implements CustomersApi {
     private CustomerService service;
 
     @Override
-    public ResponseEntity<Customer> createCustomer(@Valid Customer customer) {
+    public ResponseEntity<CustomerDto> createCustomer(@Valid CustomerDto customer) {
         return ResponseEntity.status(201).body(service.createCustomer(customer));
     }
 
     @Override
-    public ResponseEntity<List<Customer>> listCustomers(Integer page, Integer limit, String search) {
+    public ResponseEntity<List<CustomerDto>> listCustomers(Integer page, Integer limit, String search) {
         return ResponseEntity.ok(service.listCustomers(page, limit, search));
     }
 
     @Override
-    public ResponseEntity<Customer> getCustomer(String customerId) {
+    public ResponseEntity<CustomerDto> getCustomer(String customerId) {
         return ResponseEntity.ok(service.getCustomer(customerId));
     }
 
@@ -43,7 +44,7 @@ public class CustomerController implements CustomersApi {
         return ResponseEntity.ok(service.updateCustomer(customerId, customer));
     }*/
 
-    public ResponseEntity<Void> updateCustomer(String customerId,Customer customer) {
+    public ResponseEntity<Void> updateCustomer(String customerId,CustomerDto customer) {
         service.updateCustomer(customerId, customer);
         return ResponseEntity.noContent().build();
     }

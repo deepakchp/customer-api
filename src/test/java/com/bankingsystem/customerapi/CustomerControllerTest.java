@@ -1,7 +1,7 @@
 package com.bankingsystem.customerapi;
 
 import com.bankingsystem.customerapi.model.Address;
-import com.bankingsystem.customerapi.model.Customer;
+import com.bankingsystem.customerapi.model.CustomerDto;
 import com.bankingsystem.customerapi.service.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class CustomerControllerTest {
     //@MockBean
     private CustomerService service;
 
-    private Customer customer;
+    private CustomerDto customer;
 
     @BeforeEach
     void setup() {
@@ -39,7 +39,7 @@ public class CustomerControllerTest {
         address.setCity("New York");
         address.setCountry("USA");
 
-        customer = new Customer();
+        customer = new CustomerDto();
         customer.setId("cust-1001");
         customer.setFirstName("John");
         customer.setLastName("Doe");
@@ -51,7 +51,7 @@ public class CustomerControllerTest {
 
     @Test
     void testCreateCustomer() throws Exception {
-        Mockito.when(service.createCustomer(any(Customer.class))).thenReturn(customer);
+        Mockito.when(service.createCustomer(any(CustomerDto.class))).thenReturn(customer);
 
         String json = """
                 {
