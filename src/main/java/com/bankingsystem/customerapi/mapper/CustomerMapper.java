@@ -1,12 +1,13 @@
+
 package com.bankingsystem.customerapi.mapper;
 
-import com.bankingsystem.customerapi.model.Address;
+
+import com.bankingsystem.customerapi.entity.Address;
 import com.bankingsystem.customerapi.entity.Customer;
+import com.bankingsystem.customerapi.model.AddressDto;
 import com.bankingsystem.customerapi.model.CustomerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
@@ -16,15 +17,18 @@ public interface CustomerMapper {
     // DTO → Entity
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    Customer toEntity(CustomerDto dto);
+    Customer toEntity(CustomerDto customerDto);
 
-    com.bankingsystem.customerapi.entity.Address toEntity(Address dto);
+    Address toEntity(AddressDto dto);
 
+    // Entity → DTO
     CustomerDto toDTO(Customer customer);
 
-    Address toDTO(com.bankingsystem.customerapi.entity.Address address);
+    AddressDto toDTO(Address address);
 
     List<CustomerDto> toDTOList(List<Customer> customers);
 
+    List<Address> toEntityAddressList(List<AddressDto> addressDtos);
 
+    List<AddressDto> toDTOAddressList(List<Address> addresses);
 }

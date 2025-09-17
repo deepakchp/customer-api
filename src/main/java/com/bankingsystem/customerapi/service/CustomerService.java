@@ -39,9 +39,9 @@ public class CustomerService {
     }
 
     public CustomerDto updateCustomer(String id, CustomerDto dto) {
-        com.bankingsystem.customerapi.entity.Customer existing = repository.findById(id)
+        Customer existing = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
-        com.bankingsystem.customerapi.entity.Customer updated = mapper.toEntity(dto);
+        Customer updated = mapper.toEntity(dto);
         updated.setId(existing.getId());
         updated.setCreatedAt(existing.getCreatedAt());
         updated.setUpdatedAt(OffsetDateTime.now());

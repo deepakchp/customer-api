@@ -1,6 +1,7 @@
 package com.bankingsystem.customerapi;
 
-import com.bankingsystem.customerapi.model.Address;
+import com.bankingsystem.customerapi.entity.Address;
+import com.bankingsystem.customerapi.model.AddressDto;
 import com.bankingsystem.customerapi.model.CustomerDto;
 import com.bankingsystem.customerapi.service.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +34,7 @@ public class CustomerControllerTest {
 
     @BeforeEach
     void setup() {
-        Address address = new Address();
+        AddressDto address = new AddressDto();
         //address.setType(Address.AddressType.RESIDENTIAL);
         address.setLine1("123 Main St");
         address.setCity("New York");
@@ -43,7 +44,6 @@ public class CustomerControllerTest {
         customer.setId("cust-1001");
         customer.setFirstName("John");
         customer.setLastName("Doe");
-        customer.setDateOfBirth(LocalDate.of(1985, 6, 15));
         customer.setEmail("john.doe@example.com");
         customer.setPhone("+1555123456");
         customer.setAddresses(List.of(address));
